@@ -33,13 +33,13 @@ public class Deck {
      * @param values is an array containing all of the card point values.
      */
     public Deck(String[] ranks, String[] suits, int[] values) {
-		cards = new ArrayList<Card>();
+		this.cards = new ArrayList<Card>();
 		for (int i = 0; i < suits.length; i ++) {
 		    for (int j = 0; j < ranks.length; j ++) {
-		        cards.add(new Card(ranks[j],suits[i], values[j]));
+		        this.cards.add(new Card(ranks[j],suits[i], values[j]));
             }
         }
-        size = cards.size();
+        this.size = this.cards.size();
     }
 
 
@@ -48,7 +48,7 @@ public class Deck {
      * @return true if this deck is empty, false otherwise.
      */
     public boolean isEmpty() {
-		return size == 0;
+		return this.size <= 0;
     }
 
     /**
@@ -56,7 +56,7 @@ public class Deck {
      * @return the number of undealt cards in this deck.
      */
     public int size() {
-		return size;
+		return this.size;
     }
 
     /**
@@ -74,8 +74,8 @@ public class Deck {
      */
     public Card deal() {
 		if(!isEmpty()) {
-		    size--;
-		    return cards.get(size);
+		    this.size--;
+		    return this.cards.get(size);
         } else {
 		    return null;
         }
