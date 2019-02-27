@@ -33,13 +33,14 @@ public class Deck {
      * @param values is an array containing all of the card point values.
      */
     public Deck(String[] ranks, String[] suits, int[] values) {
-		this.cards = new ArrayList<Card>();
+		this.cards = new ArrayList<>();
 		for (int i = 0; i < suits.length; i ++) {
 		    for (int j = 0; j < ranks.length; j ++) {
 		        this.cards.add(new Card(ranks[j],suits[i], values[j]));
             }
         }
         this.size = this.cards.size();
+		//shuffle();;
     }
 
 
@@ -64,7 +65,23 @@ public class Deck {
      * and reset the size to represent the entire deck.
      */
     public void shuffle() {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 4 *** */
+		List<Card> shuffled = new ArrayList<>(this.cards.size());
+		int j;
+		boolean picked;
+		for(int k = 0; k < this.cards.size(); k++) {
+		    picked = false;
+		   while (!picked) {
+		       j = (int)(Math.random()*this.cards.size());
+		       if(this.cards.get(j) != null) {
+		           shuffled.set(k, this.cards.get(j));
+		           this.cards.set(j, null);
+		           picked = true;
+               }
+           }
+        }
+        for (int i = 0; i < this.cards.size(); i++) {
+            this.cards.set(i, shuffled.get(i));
+        }
     }
 
     /**
