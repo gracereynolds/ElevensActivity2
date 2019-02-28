@@ -40,7 +40,7 @@ public class Deck {
             }
         }
         this.size = this.cards.size();
-		//shuffle();;
+		shuffle();
     }
 
 
@@ -65,21 +65,21 @@ public class Deck {
      * and reset the size to represent the entire deck.
      */
     public void shuffle() {
-		List<Card> shuffled = new ArrayList<>(this.cards.size());
+		List<Card> shuffled = new ArrayList<>();
 		int j;
 		boolean picked;
-		for(int k = 0; k < this.cards.size(); k++) {
+		for(int k = 0; k < 6; k++) {
 		    picked = false;
 		   while (!picked) {
-		       j = (int)(Math.random()*this.cards.size());
+		       j = (int)(Math.random()*6);
 		       if(this.cards.get(j) != null) {
-		           shuffled.set(k, this.cards.get(j));
+		           shuffled.add(this.cards.get(j));
 		           this.cards.set(j, null);
 		           picked = true;
                }
            }
         }
-        for (int i = 0; i < this.cards.size(); i++) {
+        for (int i = 0; i < 6; i++) {
             this.cards.set(i, shuffled.get(i));
         }
     }
