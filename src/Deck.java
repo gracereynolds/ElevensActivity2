@@ -68,10 +68,10 @@ public class Deck {
 		List<Card> shuffled = new ArrayList<>();
 		int j;
 		boolean picked;
-		for(int k = 0; k < 6; k++) {
+		for(int k = 0; k < 52; k++) {
 		    picked = false;
 		   while (!picked) {
-		       j = (int)(Math.random()*6);
+		       j = (int)(Math.random()*52);
 		       if(this.cards.get(j) != null) {
 		           shuffled.add(this.cards.get(j));
 		           this.cards.set(j, null);
@@ -79,7 +79,7 @@ public class Deck {
                }
            }
         }
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 52; i++) {
             this.cards.set(i, shuffled.get(i));
         }
     }
